@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Pregunta importante 💖</title>
+
+    <style>
+        body {
+            background: linear-gradient(135deg, #ffb6c1, #ffc0cb);
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 40px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            max-width: 400px;
+            margin: auto;
+            box-shadow: 0 10px 30px rgba(0,0,0,.2);
+        }
+
+        img {
+            width: 200px;
+            margin: 20px 0;
+        }
+
+        button {
+            padding: 12px 20px;
+            border: none;
+            border-radius: 20px;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 10px;
+        }
+
+        #yes {
+            background: #ff4d6d;
+            color: white;
+        }
+
+        #no {
+            background: #ccc;
+            position: relative;
+            transition: all .3s ease;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="card">
+    <h2 id="text">¿Quieres ser mi San Valentín? 💘</h2>
+
+    <img id="gif" src="https://media.giphy.com/media/MDJ9IbxxvDUQM/giphy.gif">
+
+    <div>
+        <button id="yes">Sí ❤️</button>
+        <button id="no">No 😅</button>
+    </div>
+</div>
+
+<script>
+    let clicks = 0;
+
+    const messages = [
+        "¿Estás segura? 🥺",
+        "Piénsalo bien 😢",
+        "Me voy a poner triste 💔",
+        "Última oportunidad 😭",
+        "Ok… ya casi me convences 😅"
+    ];
+
+    const gifs = [
+        "https://media.giphy.com/media/ROF8OQvDmxytW/giphy.gif",
+        "https://media.giphy.com/media/l2QDM9Jnim1YVILXa/giphy.gif",
+        "https://media.giphy.com/media/OPU6wzx8JrHna/giphy.gif",
+        "https://media.giphy.com/media/3ohs4BSacFKI7A717y/giphy.gif",
+        "https://media.giphy.com/media/5GoVLqeAOo6PK/giphy.gif"
+    ];
+
+    document.getElementById("no").addEventListener("click", () => {
+        clicks++;
+
+        const index = Math.min(clicks - 1, messages.length - 1);
+
+        document.getElementById("text").innerText = messages[index];
+        document.getElementById("gif").src = gifs[index];
+
+        // Mover el botón No
+        const noBtn = document.getElementById("no");
+        noBtn.style.transform = `translate(${Math.random()*150 - 75}px, ${Math.random()*100 - 50}px)`;
+        noBtn.style.scale = 0.9;
+    });
+
+    document.getElementById("yes").addEventListener("click", () => {
+        document.querySelector(".card").innerHTML = `
+            <h2>¡Sabía que dirías que sí! 💖😍</h2>
+            <img src="https://media.giphy.com/media/26BRv0ThflsHCqDrG/giphy.gif">
+        `;
+    });
+</script>
+
+</body>
+</html>
