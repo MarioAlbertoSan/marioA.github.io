@@ -83,7 +83,7 @@
     document.getElementById("no").addEventListener("click", () => {
         clicks++;
 
-        const index = Math.min(clicks - 1, messages.length - 1);
+        const index = (clicks - 1) % messages.length;
 
         document.getElementById("text").innerText = messages[index];
         document.getElementById("gif").src = gifs[index];
@@ -104,3 +104,4 @@
 
 </body>
 </html>
+
