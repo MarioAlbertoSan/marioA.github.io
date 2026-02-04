@@ -12,23 +12,7 @@
                 text-align:center;
                 overflow:hidden;
             }
-            <div class="garden">
-                <div class="flower">
-                    <div class="stem"></div>
-                    <div class="head">
-                        <span></span><span></span><span></span><span></span>
-                        <span></span><span></span><span></span><span></span>
-                    </div>
-                </div>
             
-                <div class="flower delay">
-                    <div class="stem"></div>
-                    <div class="head">
-                        <span></span><span></span><span></span><span></span>
-                        <span></span><span></span><span></span><span></span>
-                    </div>
-                </div>
-            </div>
             .card{
                 background:white;
                 padding:30px;
@@ -59,29 +43,6 @@
             #no{
                 background:#ccc;
                 transition:.3s;
-            }
-            
-            /* FLORES */
-            
-            .flower {
-                position:fixed;
-                bottom:0;
-                font-size:40px;
-                animation:grow 3s ease-out forwards;
-            }
-            
-            @keyframes grow{
-                0%{
-                    transform:scale(0);
-                    opacity:0;
-                }
-                60%{
-                    transform:scale(1.2);
-                    opacity:1;
-                }
-                100%{
-                    transform:scale(1);
-                }
             }
             
             /* CONFETI */
@@ -185,7 +146,23 @@
         </style>
     </head>
     <body>
-    
+        <div class="garden">
+                <div class="flower">
+                    <div class="stem"></div>
+                    <div class="head">
+                        <span></span><span></span><span></span><span></span>
+                        <span></span><span></span><span></span><span></span>
+                    </div>
+                </div>
+            
+                <div class="flower delay">
+                    <div class="stem"></div>
+                    <div class="head">
+                        <span></span><span></span><span></span><span></span>
+                        <span></span><span></span><span></span><span></span>
+                    </div>
+                </div>
+            </div>
         <div class="card">
             <h2 id="text">¿Quieres ser mi San Valentín? 💘</h2>
         
@@ -311,6 +288,7 @@
     
     </body>
 </html>
+
 
 
 
