@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>Pregunta importante 💖</title>
+<title>Nivel Dios Final 💖</title>
 
 <style>
 
@@ -11,33 +11,22 @@ margin:0;
 overflow:hidden;
 font-family:Arial;
 background:#87ceeb;
-transition:3s;
+transition:1s;
 }
 
 /* CIELO */
 
-.sun{
-position:fixed;
-top:60px;
-right:80px;
-width:80px;
-height:80px;
-background:#ffd93b;
-border-radius:50%;
-box-shadow:0 0 40px #ffd93b;
-}
-
-.moon{
+.sun,.moon{
 position:fixed;
 top:60px;
 right:80px;
 width:70px;
 height:70px;
-background:#eee;
 border-radius:50%;
-box-shadow:0 0 30px white;
-display:none;
 }
+
+.sun{background:#ffd93b;box-shadow:0 0 40px #ffd93b}
+.moon{background:#eee;box-shadow:0 0 30px white;display:none}
 
 .star{
 position:fixed;
@@ -45,17 +34,37 @@ color:white;
 opacity:0;
 }
 
-/* NUBES CORAZON */
+/* NUBES */
 
 .cloud{
 position:fixed;
 font-size:40px;
-animation:cloud 10s linear infinite;
+animation:cloud 8s linear infinite;
 }
 
 @keyframes cloud{
 from{left:-100px}
 to{left:110%}
+}
+
+/* FLORES SUELO */
+
+.ground{
+position:fixed;
+bottom:0;
+width:100%;
+display:flex;
+justify-content:space-around;
+font-size:40px;
+}
+
+.flower{
+animation:grow 2s forwards;
+}
+
+@keyframes grow{
+from{transform:scale(0)}
+to{transform:scale(1)}
 }
 
 /* TARJETA */
@@ -68,8 +77,8 @@ max-width:400px;
 margin:150px auto;
 text-align:center;
 box-shadow:0 10px 30px rgba(0,0,0,.3);
-position:relative;
 z-index:10;
+position:relative;
 }
 
 img{width:220px}
@@ -86,7 +95,7 @@ cursor:pointer;
 #yes{background:#ff4d6d;color:white}
 #no{background:#ccc}
 
-/* CORAZONES */
+/* EFECTOS */
 
 .heart{
 position:fixed;
@@ -95,11 +104,7 @@ font-size:26px;
 animation:rise 4s ease forwards;
 }
 
-@keyframes rise{
-to{bottom:90%;opacity:0}
-}
-
-/* CONFETI */
+@keyframes rise{to{bottom:90%;opacity:0}}
 
 .confetti{
 position:fixed;
@@ -110,13 +115,8 @@ animation:shoot 2s forwards;
 }
 
 @keyframes shoot{
-to{
-transform:translate(var(--x),var(--y)) rotate(720deg);
-opacity:0;
+to{transform:translate(var(--x),var(--y)) rotate(720deg);opacity:0}
 }
-}
-
-/* PETALOS */
 
 .petal{
 position:fixed;
@@ -126,10 +126,7 @@ animation:fall 6s linear forwards;
 }
 
 @keyframes fall{
-to{
-transform:translateX(80px) translateY(110vh) rotate(360deg);
-opacity:0;
-}
+to{transform:translateX(80px) translateY(110vh) rotate(360deg);opacity:0}
 }
 
 </style>
@@ -140,11 +137,13 @@ opacity:0;
 <div class="sun"></div>
 <div class="moon"></div>
 
+<div class="ground" id="ground"></div>
+
 <div class="card">
 
 <h2 id="text">¿Quieres ser mi San Valentín? 💘</h2>
 
-<img id="gif" src="gif6.gif">
+<img id="gif" src="https://media.giphy.com/media/l2QDM9Jnim1YVILXa/giphy.gif">
 
 <button id="yes">Sí ❤️</button>
 <button id="no">No 😅</button>
@@ -153,9 +152,9 @@ opacity:0;
 
 <script>
 
-/* FRASES ORIGINALES */
+/* MENSAJES Y GIFS ORIGINALES */
 
-const phrases=[
+const messages=[
 "¿Estás segura? 🥺",
 "Piénsalo bien 😢",
 "Me voy a poner triste 💔",
@@ -166,10 +165,10 @@ const phrases=[
 "Seguimos jugando 😏"
 ];
 
-/* TUS GIFS */
-
 const gifs=[
+"https://media.giphy.com/media/l2QDM9Jnim1YVILXa/giphy.gif",
 "gif5.gif",
+"https://media.giphy.com/media/ROF8OQvDmxytW/giphy.gif",
 "gif1.gif",
 "gif3.gif",
 "gif4.gif",
@@ -178,12 +177,55 @@ const gifs=[
 ];
 
 let clicks=0;
+let day=true;
 
 const yes=document.getElementById("yes");
 const no=document.getElementById("no");
 const text=document.getElementById("text");
 const gif=document.getElementById("gif");
-const phrase=document.getElementById("phrase");
+
+/* FLORES SUELO */
+
+function drawFlowers(open=true){
+
+ground.innerHTML="";
+
+for(let i=0;i<10;i++){
+let f=document.createElement("div");
+f.className="flower";
+f.innerText=open?"🌸":"🌷";
+ground.appendChild(f);
+}
+}
+
+drawFlowers(true);
+
+/* DIA NOCHE CADA 2s */
+
+setInterval(()=>{
+
+day=!day;
+
+document.body.style.background=day?"#87ceeb":"#071a2c";
+document.querySelector(".sun").style.display=day?"block":"none";
+document.querySelector(".moon").style.display=day?"none":"block";
+
+drawFlowers(day);
+
+if(!day){
+for(let i=0;i<30;i++){
+let s=document.createElement("div");
+s.className="star";
+s.innerText="✦";
+s.style.left=Math.random()*100+"%";
+s.style.top=Math.random()*50+"%";
+document.body.appendChild(s);
+setTimeout(()=>s.style.opacity=1,200);
+setTimeout(()=>s.remove(),2000);
+}
+}
+
+},2000);
 
 /* NUBES CORAZON */
 
@@ -193,35 +235,15 @@ c.className="cloud";
 c.innerText="💗";
 c.style.top=Math.random()*200+"px";
 document.body.appendChild(c);
-setTimeout(()=>c.remove(),10000);
+setTimeout(()=>c.remove(),8000);
 },900);
-
-/* DIA A NOCHE */
-
-setTimeout(()=>{
-document.body.style.background="#071a2c";
-document.querySelector(".sun").style.display="none";
-document.querySelector(".moon").style.display="block";
-
-for(let i=0;i<50;i++){
-let s=document.createElement("div");
-s.className="star";
-s.innerText="✦";
-s.style.left=Math.random()*100+"%";
-s.style.top=Math.random()*50+"%";
-document.body.appendChild(s);
-setTimeout(()=>s.style.opacity=1,300);
-}
-},2500);
 
 /* BOTONES */
 
 no.onclick=()=>{
 clicks++;
-
-text.innerText=phrases[clicks%phrases.length];
+text.innerText=messages[clicks%messages.length];
 gif.src=gifs[clicks%gifs.length];
-
 no.style.transform=`translate(${Math.random()*200-100}px,${Math.random()*150-75}px)`;
 yes.style.scale=1+clicks*0.15;
 };
@@ -230,7 +252,7 @@ yes.onclick=()=>{
 
 document.querySelector(".card").innerHTML=`
 <h2>Sabía que dirías que sí 😍</h2>
-<img src="gif7.gif">
+<img src="gif7.gif"><br>
 <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExdmwxNGt0cDBvcG92cWdwNHNqamJ1a3pyMXBmMWkza2xwZm5scG9jeCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/ruhRMwYZkcJ8q7QtqV/giphy.gif">
 <p>Gracias por hacerme tan feliz 💖</p>
 `;
@@ -267,7 +289,7 @@ setTimeout(()=>c.remove(),2000);
 }
 
 function petals(){
-for(let i=0;i<30;i++){
+for(let i=0;i<40;i++){
 let p=document.createElement("img");
 p.src="https://pngimg.com/uploads/rose_petals/rose_petals_PNG582.png";
 p.className="petal";
