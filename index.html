@@ -1,293 +1,253 @@
 <!DOCTYPE html>
     <html lang="es">
     <head>
-        <meta charset="UTF-8">
+    <meta charset="UTF-8">
+    <title>Pregunta importante 💖</title>
+    
+    <style>
         
-        <title>Pregunta importante</title>
+        body{
+            margin:0;
+            background:linear-gradient(135deg,#ffb6c1,#ffc0cb);
+            font-family:Arial;
+            text-align:center;
+            overflow:hidden;
+        }
         
-        <style>
-            body {
-                background: linear-gradient(135deg,#ffb6c1,#ffc0cb);
-                font-family: Arial;
-                text-align:center;
-                overflow:hidden;
-            }
-            
-            .card{
-                background:white;
-                padding:30px;
-                border-radius:25px;
-                max-width:400px;
-                margin:80px auto;
-                box-shadow:0 10px 30px rgba(0,0,0,.3);
-            }
-            img{
-                width:200px;
-            }
-            
-            button{
-                padding:12px 25px;
-                border:none;
-                border-radius:20px;
-                font-size:16px;
-                cursor:pointer;
-                margin:10px;
-            }
-            
-            #yes{
-                background:#ff4d6d;
-                color:white;
-                transition:.3s;
-            }
-            
-            #no{
-                background:#ccc;
-                transition:.3s;
-            }
-            
-            /* CONFETI */
-            
-           .confetti {
-                position: fixed;
-                width: 8px;
-                height: 14px;
-                top: 100%;
-                animation: shoot 2s ease-out forwards;
-            }
-
-            @keyframes shoot {
-                0% {
-                    transform: translate(0,0) rotate(0deg);
-                    opacity:1;
-                }
-                100% {
-                    transform: translate(var(--x), var(--y)) rotate(720deg);
-                    opacity:0;
-                }
-            }
-            
-            @keyframes fall{
-                to{transform:translateY(600px) rotate(360deg)}
-            }
-
-            .heart{
-                position:fixed;
-                font-size:30px;
-                animation:rise 3s ease forwards;
-            }
-                
-            @keyframes rise{
-                from{bottom:0;opacity:1}
-                to{bottom:80%;opacity:0}
-            }
-            .garden {
-                display:flex;
-                justify-content:center;
-                gap:60px;
-                margin-bottom:30px;
-            }
-            
-            .flower {
-                position:relative;
-                animation: wind 4s ease-in-out infinite;
-            }
-            
-            .delay {
-                animation-delay:1.5s;
-            }
-            
-            .stem {
-                width:6px;
-                height:0;
-                background:#2ecc71;
-                margin:auto;
-                animation: grow 2s forwards;
-            }
-            
-            .head {
-                position:absolute;
-                top:-30px;
-                left:-20px;
-                opacity:0;
-                animation: bloom 1s forwards;
-                animation-delay:2s;
-            }
-            
-            .head span {
-                position:absolute;
-                width:20px;
-                height:20px;
-                background:#ffd500;
-                border-radius:50%;
-            }
-            
-            .head span:nth-child(1){top:0;left:20px;}
-            .head span:nth-child(2){top:20px;left:0;}
-            .head span:nth-child(3){top:20px;left:40px;}
-            .head span:nth-child(4){top:40px;left:20px;}
-            .head span:nth-child(5){top:10px;left:10px;}
-            .head span:nth-child(6){top:10px;left:30px;}
-            .head span:nth-child(7){top:30px;left:10px;}
-            .head span:nth-child(8){top:30px;left:30px;}
-            
-            @keyframes grow {
-                to { height:120px; }
-            }
-            
-            @keyframes bloom {
-                to { opacity:1; }
-            }
-            
-            @keyframes wind {
-                0%,100% { transform:rotate(0deg); }
-                50% { transform:rotate(4deg); }
-            }
-            
+        /* ===== FLORES ===== */
+        
+        .garden{
+            position:fixed;
+            bottom:0;
+            width:100%;
+            display:flex;
+            justify-content:center;
+            gap:80px;
+        }
+        
+        .flower{
+            position:relative;
+            animation:wind 4s ease-in-out infinite;
+        }
+        
+        .delay{animation-delay:1.5s}
+        
+        .stem{
+            width:6px;
+            height:0;
+            background:#2ecc71;
+            margin:auto;
+            animation:grow 2s forwards;
+        }
+        
+        .head{
+            position:absolute;
+            top:-30px;
+            left:-20px;
+            opacity:0;
+            animation:bloom 1s forwards;
+            animation-delay:2s;
+        }
+        
+        .head span{
+            position:absolute;
+            width:20px;
+            height:20px;
+            background:#ffd500;
+            border-radius:50%;
+        }
+        
+        .head span:nth-child(1){top:0;left:20px;}
+        .head span:nth-child(2){top:20px;left:0;}
+        .head span:nth-child(3){top:20px;left:40px;}
+        .head span:nth-child(4){top:40px;left:20px;}
+        .head span:nth-child(5){top:10px;left:10px;}
+        .head span:nth-child(6){top:10px;left:30px;}
+        .head span:nth-child(7){top:30px;left:10px;}
+        .head span:nth-child(8){top:30px;left:30px;}
+        
+        @keyframes grow{to{height:120px}}
+        @keyframes bloom{to{opacity:1}}
+        @keyframes wind{
+        0%,100%{transform:rotate(0)}
+        50%{transform:rotate(4deg)}
+        }
+        
+        /* ===== TARJETA ===== */
+        
+        .card{
+        background:white;
+        padding:30px;
+        border-radius:25px;
+        max-width:400px;
+        margin:120px auto;
+        box-shadow:0 10px 30px rgba(0,0,0,.3);
+        position:relative;
+        z-index:10;
+        }
+        
+        img{width:200px}
+        
+        button{
+        padding:12px 25px;
+        border:none;
+        border-radius:20px;
+        font-size:16px;
+        cursor:pointer;
+        margin:10px;
+        }
+        
+        #yes{background:#ff4d6d;color:white}
+        #no{background:#ccc}
+        
+        /* ===== EFECTOS ===== */
+        
+        .confetti{
+        position:fixed;
+        width:8px;
+        height:14px;
+        top:50%;
+        animation:shoot 2s ease-out forwards;
+        }
+        
+        @keyframes shoot{
+        to{
+        transform:translate(var(--x),var(--y)) rotate(720deg);
+        opacity:0;
+        }
+        }
+        
+        .heart{
+        position:fixed;
+        bottom:0;
+        font-size:30px;
+        animation:rise 3s ease forwards;
+        }
+        
+        @keyframes rise{
+        to{bottom:80%;opacity:0}
+        }
+        
         </style>
     </head>
-    <body>
+    
+        <body>
+        
+        <!-- FLORES -->
+        
         <div class="garden">
-                <div class="flower">
-                    <div class="stem"></div>
-                    <div class="head">
-                        <span></span><span></span><span></span><span></span>
-                        <span></span><span></span><span></span><span></span>
-                    </div>
-                </div>
-            
-                <div class="flower delay">
-                    <div class="stem"></div>
-                    <div class="head">
-                        <span></span><span></span><span></span><span></span>
-                        <span></span><span></span><span></span><span></span>
-                    </div>
-                </div>
-            </div>
-        <div class="card">
-            <h2 id="text">¿Quieres ser mi San Valentín? 💘</h2>
-        
-            <img id="gif" src="gif6.gif">
-        
-            <div>
-                <button id="yes">Sí ❤️</button>
-                <button id="no">No 😅</button>
+            <div class="flower">
+                <div class="stem"></div>
+                <div class="head">
+                <span></span><span></span><span></span><span></span>
+                <span></span><span></span><span></span><span></span>
             </div>
         </div>
-
-    
+        
+        <div class="flower delay">
+            <div class="stem"></div>
+                <div class="head">
+                    <span></span><span></span><span></span><span></span>
+                    <span></span><span></span><span></span><span></span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- TARJETA -->
+        
+        <div class="card">
+        
+        <h2 id="text">¿Quieres ser mi San Valentín? 💘</h2>
+        
+        <img id="gif" src="gif6.gif">
+        
+        <div>
+            <button id="yes">Sí ❤️</button>
+            <button id="no">No 😅</button>
+        </div>
+        
+        </div>
+        
         <script>
-            let clicks = 0;
         
-            const messages = [
-                "¿Estás segura? 🥺",
-                "Piénsalo bien 😢",
-                "Me voy a poner triste 💔",
-                "Última oportunidad 😭",
-                "Nice try 😂",
-                "Vamos a fingir que no pasó 😂",
-                "Te voy a dar otro chance 😏",
-                "Seguimos jugando 😏"
-            ];
+        let clicks=0;
         
-            const gifs = [
-                "https://media.giphy.com/media/l2QDM9Jnim1YVILXa/giphy.gif",
-                "gif5.gif",
-                "https://media.giphy.com/media/ROF8OQvDmxytW/giphy.gif",
-                "gif1.gif",
-                "gif3.gif",
-                "gif4.gif",
-                "gif8.gif",
-                "gif2.gif",
-            ];
+        const messages=[
+        "¿Estás segura? 🥺",
+        "Piénsalo bien 😢",
+        "Me pondré triste 💔",
+        "Última oportunidad 😭",
+        "Nice try 😂",
+        "Seguimos jugando 😏"
+        ];
         
-            const yes=document.getElementById("yes");
-            const no=document.getElementById("no");
-            
-            no.onclick=()=>{
-            
-            clicks++;
-            
-            document.getElementById("jump").play();
-            
-            const i=(clicks-1)%messages.length;
-            
-            text.innerText=messages[i];
-            gif.src=gifs[i];
-            
-            no.style.transform=`translate(${Math.random()*200-100}px,${Math.random()*150-75}px)`;
-            
-            // crecer botón sí
-            yes.style.scale=1+clicks*0.15;
-            };
-            
-            yes.onclick=()=>{
-            
-            document.getElementById("win").play();
-            
-            document.querySelector(".card").innerHTML=`
-            <h2>Sabía que dirías que sí 💖</h2>
-            <img src="gif7.gif">
-            `;
-            
-            confetti();
-            flowers();
-            hearts();
-            };
-            
-            // CONFETI
-            function confetti(){
-                for(let i=0;i<120;i++){
-                    let c=document.createElement("div");
-                    c.className="confetti";
-                    
-                    c.style.left="50%";
-                    c.style.background=`hsl(${Math.random()*360},100%,50%)`;
-                    
-                    c.style.setProperty("--x",`${Math.random()*600-300}px`);
-                    c.style.setProperty("--y",`${-Math.random()*500-200}px`);
-                    
-                    document.body.appendChild(c);
-                    
-                    setTimeout(()=>c.remove(),2000);
-                }
+        const gifs=[
+        "https://media.giphy.com/media/l2QDM9Jnim1YVILXa/giphy.gif",
+        "gif5.gif",
+        "https://media.giphy.com/media/ROF8OQvDmxytW/giphy.gif",
+        "gif1.gif",
+        "gif3.gif",
+        "gif4.gif"
+        ];
+        
+        const yes=document.getElementById("yes");
+        const no=document.getElementById("no");
+        const text=document.getElementById("text");
+        const gif=document.getElementById("gif");
+        
+        no.onclick=()=>{
+        
+        clicks++;
+        
+        let i=(clicks-1)%messages.length;
+        
+        text.innerText=messages[i];
+        gif.src=gifs[i];
+        
+        no.style.transform=`translate(${Math.random()*200-100}px,${Math.random()*150-75}px)`;
+        yes.style.scale=1+clicks*0.15;
+        };
+        
+        yes.onclick=()=>{
+        
+        document.querySelector(".card").innerHTML=`
+        <h2>Sabía que dirías que sí 💖</h2>
+        <img src="gif7.gif">
+        `;
+        
+        confetti();
+        hearts();
+        };
+        
+        function confetti(){
+            for(let i=0;i<120;i++){
+                let c=document.createElement("div");
+                c.className="confetti";
+                c.style.left="50%";
+                c.style.background=`hsl(${Math.random()*360},100%,50%)`;
+                c.style.setProperty("--x",`${Math.random()*600-300}px`);
+                c.style.setProperty("--y",`${-Math.random()*500-200}px`);
+                document.body.appendChild(c);
+                setTimeout(()=>c.remove(),2000);
             }
-            
-            // FLORES
-            function flowers(){
-                
-                for(let i=0;i<12;i++){
-                
-                    let f=document.createElement("div");
-                    f.className="flower";
-                    f.innerText="🌸";
-                    
-                    f.style.left=Math.random()*100+"%";
-                    
-                    document.body.appendChild(f);
-                    
-                    setTimeout(()=>f.remove(),4000);
-                }
+        }
+        
+        function hearts(){
+            for(let i=0;i<20;i++){
+                let h=document.createElement("div");
+                h.className="heart";
+                h.innerText="❤️";
+                h.style.left=Math.random()*100+"%";
+                document.body.appendChild(h);
+                setTimeout(()=>h.remove(),3000);
             }
-
-            function hearts(){
-                
-                for(let i=0;i<20;i++){
-                
-                    let h=document.createElement("div");
-                    h.className="heart";
-                    h.innerText="❤️";
-                    
-                    h.style.left=Math.random()*100+"%";
-                    
-                    document.body.appendChild(h);
-                    
-                    setTimeout(()=>h.remove(),3000);
-                }
-            }
+        }
+        
         </script>
     
     </body>
 </html>
+
 
 
 
