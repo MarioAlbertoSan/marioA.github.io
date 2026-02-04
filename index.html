@@ -12,7 +12,23 @@
                 text-align:center;
                 overflow:hidden;
             }
+            <div class="garden">
+                <div class="flower1">
+                    <div class="stem"></div>
+                    <div class="head">
+                        <span></span><span></span><span></span><span></span>
+                        <span></span><span></span><span></span><span></span>
+                    </div>
+                </div>
             
+                <div class="flower delay">
+                    <div class="stem"></div>
+                    <div class="head">
+                        <span></span><span></span><span></span><span></span>
+                        <span></span><span></span><span></span><span></span>
+                    </div>
+                </div>
+            </div>
             .card{
                 background:white;
                 padding:30px;
@@ -21,7 +37,6 @@
                 margin:80px auto;
                 box-shadow:0 10px 30px rgba(0,0,0,.3);
             }
-            
             img{
                 width:200px;
             }
@@ -104,7 +119,69 @@
                 from{bottom:0;opacity:1}
                 to{bottom:80%;opacity:0}
             }
-
+            .garden {
+                display:flex;
+                justify-content:center;
+                gap:60px;
+                margin-bottom:30px;
+            }
+            
+            .flower1 {
+                position:relative;
+                animation: wind 4s ease-in-out infinite;
+            }
+            
+            .delay {
+                animation-delay:1.5s;
+            }
+            
+            .stem {
+                width:6px;
+                height:0;
+                background:#2ecc71;
+                margin:auto;
+                animation: grow 2s forwards;
+            }
+            
+            .head {
+                position:absolute;
+                top:-30px;
+                left:-20px;
+                opacity:0;
+                animation: bloom 1s forwards;
+                animation-delay:2s;
+            }
+            
+            .head span {
+                position:absolute;
+                width:20px;
+                height:20px;
+                background:#ffd500;
+                border-radius:50%;
+            }
+            
+            .head span:nth-child(1){top:0;left:20px;}
+            .head span:nth-child(2){top:20px;left:0;}
+            .head span:nth-child(3){top:20px;left:40px;}
+            .head span:nth-child(4){top:40px;left:20px;}
+            .head span:nth-child(5){top:10px;left:10px;}
+            .head span:nth-child(6){top:10px;left:30px;}
+            .head span:nth-child(7){top:30px;left:10px;}
+            .head span:nth-child(8){top:30px;left:30px;}
+            
+            @keyframes grow {
+                to { height:120px; }
+            }
+            
+            @keyframes bloom {
+                to { opacity:1; }
+            }
+            
+            @keyframes wind {
+                0%,100% { transform:rotate(0deg); }
+                50% { transform:rotate(4deg); }
+            }
+            
         </style>
     </head>
     <body>
@@ -236,6 +313,7 @@
     
     </body>
 </html>
+
 
 
 
