@@ -1,115 +1,179 @@
 <!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Pregunta importante 💖</title>
-
-    <style>
-        body {
-            background: linear-gradient(135deg, #ffb6c1, #ffc0cb);
-            font-family: Arial, sans-serif;
-            text-align: center;
-            padding: 40px;
-        }
-
-        .card {
-            background: white;
-            border-radius: 20px;
-            padding: 30px;
-            max-width: 400px;
-            margin: auto;
-            box-shadow: 0 10px 30px rgba(0,0,0,.2);
-        }
-
-        img {
-            width: 200px;
-            margin: 20px 0;
-        }
-
-        button {
-            padding: 12px 20px;
-            border: none;
-            border-radius: 20px;
-            font-size: 16px;
-            cursor: pointer;
-            margin: 10px;
-        }
-
-        #yes {
-            background: #ff4d6d;
-            color: white;
-        }
-
-        #no {
-            background: #ccc;
-            position: relative;
-            transition: all .3s ease;
-        }
-    </style>
-</head>
-
-<body>
-
-<div class="card">
-    <h2 id="text">¿Quieres ser mi San Valentín? 💘</h2>
-
-    <img id="gif" src="gif6.gif">
-
-    <div>
-        <button id="yes">Sí ❤️</button>
-        <button id="no">No 😅</button>
-    </div>
-</div>
-
-<script>
-    let clicks = 0;
-
-    const messages = [
-        "¿Estás segura? 🥺",
-        "Piénsalo bien 😢",
-        "Me voy a poner triste 💔",
-        "Última oportunidad 😭",
-        "Nice try 😂",
-        "Vamos a fingir que no pasó 😂",
-        "Te voy a dar otro chance 😏",
-        "Seguimos jugando 😏"
-    ];
-
-    const gifs = [
-        "https://media.giphy.com/media/l2QDM9Jnim1YVILXa/giphy.gif",
-        "gif5.gif",
-        "https://media.giphy.com/media/ROF8OQvDmxytW/giphy.gif",
-        "gif1.gif",
-        "gif3.gif",
-        "gif4.gif",
-        "gif8.gif",
-        "gif2.gif",
-    ];
-
-    document.getElementById("no").addEventListener("click", () => {
-        clicks++;
-
-        const index = (clicks - 1) % messages.length;
-
-        document.getElementById("text").innerText = messages[index];
-        document.getElementById("gif").src = gifs[index];
-
-        // Mover el botón No
-        const noBtn = document.getElementById("no");
-        noBtn.style.transform = `translate(${Math.random()*150 - 75}px, ${Math.random()*100 - 50}px)`;
-        noBtn.style.scale = 0.9;
-    });
-
-    document.getElementById("yes").addEventListener("click", () => {
-        document.querySelector(".card").innerHTML = `
-            <h2>¡Sabía que dirías que sí! 💖😍</h2>
-            <img src="gif7.gif">
-        `;
-    });
-</script>
-
-</body>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        
+        <title>Pregunta importante</title>
+        
+        <style>
+            body {
+                background: linear-gradient(135deg,#ffb6c1,#ffc0cb);
+                font-family: Arial;
+                text-align:center;
+                overflow:hidden;
+            }
+            
+            .card{
+                background:white;
+                padding:30px;
+                border-radius:25px;
+                max-width:400px;
+                margin:80px auto;
+                box-shadow:0 10px 30px rgba(0,0,0,.3);
+            }
+            
+            img{
+                width:200px;
+            }
+            
+            button{
+                padding:12px 25px;
+                border:none;
+                border-radius:20px;
+                font-size:16px;
+                cursor:pointer;
+                margin:10px;
+            }
+            
+            #yes{
+                background:#ff4d6d;
+                color:white;
+                transition:.3s;
+            }
+            
+            #no{
+                background:#ccc;
+                transition:.3s;
+            }
+            
+            /* FLORES */
+            
+            .flower{
+                position:fixed;
+                font-size:30px;
+                animation:float 4s linear forwards;
+            }
+            
+            @keyframes float{
+                from{bottom:0;opacity:1}
+                to{bottom:100%;opacity:0}
+            }
+            
+            /* CONFETI */
+            
+            .confetti{
+                position:fixed;
+                width:10px;
+                height:10px;
+                animation:fall 3s linear forwards;
+            }
+            
+            @keyframes fall{
+                to{transform:translateY(600px) rotate(360deg)}
+            }
+        </style>
+    </head>
+    <body>
+    
+        <div class="card">
+            <h2 id="text">¿Quieres ser mi San Valentín? 💘</h2>
+        
+            <img id="gif" src="gif6.gif">
+        
+            <div>
+                <button id="yes">Sí ❤️</button>
+                <button id="no">No 😅</button>
+            </div>
+        </div>
+        <!-- SONIDOS -->
+        <audio id="jump" src="jump.mp3"></audio>
+        <audio id="win" src="win.mp3"></audio>
+    
+        <script>
+            let clicks = 0;
+        
+            const messages = [
+                "¿Estás segura? 🥺",
+                "Piénsalo bien 😢",
+                "Me voy a poner triste 💔",
+                "Última oportunidad 😭",
+                "Nice try 😂",
+                "Vamos a fingir que no pasó 😂",
+                "Te voy a dar otro chance 😏",
+                "Seguimos jugando 😏"
+            ];
+        
+            const gifs = [
+                "https://media.giphy.com/media/l2QDM9Jnim1YVILXa/giphy.gif",
+                "gif5.gif",
+                "https://media.giphy.com/media/ROF8OQvDmxytW/giphy.gif",
+                "gif1.gif",
+                "gif3.gif",
+                "gif4.gif",
+                "gif8.gif",
+                "gif2.gif",
+            ];
+        
+            const yes=document.getElementById("yes");
+            const no=document.getElementById("no");
+            
+            no.onclick=()=>{
+            
+            clicks++;
+            
+            document.getElementById("jump").play();
+            
+            const i=(clicks-1)%messages.length;
+            
+            text.innerText=messages[i];
+            gif.src=gifs[i];
+            
+            no.style.transform=`translate(${Math.random()*200-100}px,${Math.random()*150-75}px)`;
+            
+            // crecer botón sí
+            yes.style.scale=1+clicks*0.15;
+            };
+            
+            yes.onclick=()=>{
+            
+            document.getElementById("win").play();
+            
+            document.querySelector(".card").innerHTML=`
+            <h2>Sabía que dirías que sí 💖</h2>
+            <img src="cute.gif">
+            `;
+            
+            confetti();
+            flowers();
+            };
+            
+            // CONFETI
+            function confetti(){
+            for(let i=0;i<100;i++){
+            let c=document.createElement("div");
+            c.className="confetti";
+            c.style.left=Math.random()*100+"%";
+            c.style.top="-10px";
+            c.style.background=`hsl(${Math.random()*360},100%,50%)`;
+            document.body.appendChild(c);
+            }
+            }
+            
+            // FLORES
+            function flowers(){
+            for(let i=0;i<30;i++){
+            let f=document.createElement("div");
+            f.className="flower";
+            f.innerText="🌸";
+            f.style.left=Math.random()*100+"%";
+            document.body.appendChild(f);
+            }
+            }
+        </script>
+    
+    </body>
 </html>
+
 
 
 
